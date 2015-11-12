@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-void residuos(base,numero);
-int valores[],i;
+void residuos(int base,int numero);
+int valores[] = {},i;
 int main() {
 	int base,numero,j;
-	printf("Inserta un numero en base 10: ");
-	scanf("%d",&numero);
-	printf("Inserta la nueva base: ");
-	scanf("%d",&base);
-	residuos(base,numero);
+	printf("\nInserta un numero en base 10: ");
+	scanf("%d",&numero); //Obteniendo numero
+	printf("Inserta la nueva base (2-16): ");
+	scanf("%d",&base); //Obteniendo base
+	residuos(base,numero); //Metodo para obtener residuos
 	j = i;
 	printf("El valor en la base seleccionada es: ");
+	//Imprime todos los números desde el ultimo residuo hasta el primero
+	//Convierte a letras para bases de 10 a 16
 	while(j > 0){
 		switch(valores[j-1]){
 			case 10:
@@ -37,14 +39,16 @@ int main() {
 		}
 		j--;
 	}
+	printf("\n");
 }
 void residuos(base,numero){
 	int letras;
 	i=0;
 	while(numero != 0){
+		//Aplicando el algoritmo de la división
 		letras = numero%base;
 		numero = numero/base;
-		valores[i] = letras;
+		valores[i] = letras; //Guardando los residuos en un arreglo
 		++i;
 	}
 }
